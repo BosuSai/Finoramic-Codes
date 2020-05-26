@@ -1,0 +1,29 @@
+import java.util.*;
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public ArrayList<ArrayList<Integer>> anagrams(final List<String> A) {
+        ArrayList<ArrayList<Integer>> Ans=new ArrayList<ArrayList<Integer>>();
+        HashMap<String ,ArrayList<Integer>> hm=new HashMap<>();
+        for(int t=0;t<A.size();t++){
+            String s=A.get(t);
+            char arr[]=s.toCharArray();
+            Arrays.sort(arr);
+            s=Arrays.toString(arr);
+            if(hm.containsKey(s)){
+                ArrayList<Integer> temp=hm.get(s);
+                temp.add(t+1);
+                hm.put(s,temp);
+            }
+            else{
+            ArrayList<Integer> nAl=new ArrayList<>();
+            nAl.add(t+1);
+            hm.put(s,nAl);
+            }
+        }
+        
+    for(Map.Entry<String,ArrayList<Integer>> map: hm.entrySet())
+        Ans.add(map.getValue());
+    return Ans;
+        
+    }
+}
