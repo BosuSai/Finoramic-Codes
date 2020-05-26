@@ -1,0 +1,19 @@
+public class Solution {
+    public int braces(String A) {
+    Stack<Character> s=new Stack<>();
+        for(int t=0;t<A.length();t++){
+            char c=A.charAt(t);
+            if(c=='+'||c=='-'||c=='*'||c=='/'||c=='('){
+                s.push(c);
+            }
+            if(c==')')
+                {
+                    char e=s.pop();
+                    if(e=='(')
+                    return 1;
+                    s.pop();
+                }
+    }
+        return 0;
+    }
+}
